@@ -1,0 +1,9 @@
+.title__block{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    background-color: var(--black);
+    margin-bottom: 100px;
+}

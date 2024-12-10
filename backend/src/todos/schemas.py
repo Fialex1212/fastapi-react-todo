@@ -5,16 +5,13 @@ from datetime import datetime
 
 class BaseTodo(BaseModel):
     title: Optional[str] = "Title"
-    description: Optional[str] = ""
     is_completed: Optional[bool] = False
 
 class TodoCreate(BaseTodo):
     pass
 
 class TodoUpdate(BaseTodo):
-    title: Optional[str] = "Title"
-    description: Optional[str] = ""
-    is_completed: Optional[bool] = False
+    pass
 
 class Todo(BaseTodo):
     id: UUID
@@ -22,4 +19,4 @@ class Todo(BaseTodo):
     updated_at: datetime
 
     class Config:
-        form_attributes = True
+        orm_mode = True

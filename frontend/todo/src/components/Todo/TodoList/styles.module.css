@@ -1,0 +1,44 @@
+.todo__list__container{
+    max-width: 736px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.todo__list{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+}
+
+.todo__list__info{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.info__item{
+    display: flex;
+    gap: 8px;
+}
+
+.info__numbers{
+    background-color: var(--block-primary);
+    border-radius: 100px;
+    padding: 0px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.tasks__created{
+   color: var(--blue); 
+   font-size: var(--fz-medium);
+   font-weight: 600;
+}
+
+.completed__text{
+    color: var(--purple);
+    font-size: var(--fz-medium);
+    font-weight: 600;
+}
+

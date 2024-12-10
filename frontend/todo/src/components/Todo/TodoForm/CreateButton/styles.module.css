@@ -1,0 +1,29 @@
+.button{
+    position: relative;
+    width: 104px;
+    height: 52px;
+    background-color: var(--button-primary);
+    border-radius: 8px;
+    transition: .3s;
+    padding-right: 15px;
+    font-weight: 500;
+    font-size: var(--fz-medium);
+}
+
+.button:hover{
+    background-color: var(--blue);
+    transition: .3s;
+}
+
+.button::after{
+    content: "";
+    position: absolute;
+    background-image: url(../../../../../public/plus.svg);
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    transform: translate(40%, -50%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}

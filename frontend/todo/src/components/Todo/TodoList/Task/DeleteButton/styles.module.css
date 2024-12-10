@@ -1,0 +1,13 @@
+.delete__button{
+    cursor: pointer;
+}
+
+.delete__button svg path {
+  transition: fill 0.3s ease;
+  fill: #808080;
+}
+
+.delete__button:hover svg path {
+  fill: #ff0000;
+}
+

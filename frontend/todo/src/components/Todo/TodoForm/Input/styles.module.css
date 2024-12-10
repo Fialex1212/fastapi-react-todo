@@ -1,0 +1,8 @@
+.input {
+  background-color: var(--block-primary);
+  font-size: var(--fz-huge);
+  height: 54px;
+  width: 520px;
+  border-radius: 8px;
+  padding: 16px;
+}

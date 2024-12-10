@@ -1,3 +1,4 @@
+from uuid import UUID
 from fastapi import HTTPException
 from sqlalchemy.ext.asyncio import AsyncSession
 from .models import Todo as DBTodo
@@ -18,7 +19,7 @@ async def create_todo(
 
 async def get_todo(
     db: AsyncSession, 
-    todo_id: str
+    todo_id: UUID
 ):
     db_todo = await db.get(DBTodo, todo_id)
     return db_todo
@@ -34,15 +35,13 @@ async def get_todos(
 
 async def update_todo(
     db: AsyncSession, 
-    todo_id: str, 
+    todo_id: UUID, 
     todo_update: TodoUpdate
 ):
     db_todo = await db.get(DBTodo, todo_id)
     if db_todo:
         if todo_update.title is not None:
             db_todo.title = todo_update.title
-        if todo_update.description is not None:
-            db_todo.description = todo_update.description
         if todo_update.is_completed is not None:
             db_todo.is_completed = todo_update.is_completed
 
@@ -57,7 +56,7 @@ async def update_todo(
 
 async def delete_todo(
     db: AsyncSession, 
-    todo_id: str
+    todo_id: UUID
 ):
     db_todo = await db.get(DBTodo, todo_id)
     if db_todo:
