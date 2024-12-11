@@ -21,6 +21,7 @@ Run the frontend
 
 ```bash
   cd frontend
+  cd todo
   npm install
   npm run dev
 ```
@@ -172,14 +173,7 @@ Run the backend
 ```
 ## Screenshots
 
-### Desktop
 ![Desktop app Screenshot](./images/1.jpg)
-
-### Table
-![Table app Screenshot](./images/2.jpg)
-
-### Mobile
-![Mobile app Screenshot](./images/3.jpg)
 
 
 ## Authors

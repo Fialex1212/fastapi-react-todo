@@ -21,4 +21,5 @@
 
 .task__cross{
     text-decoration: line-through;
+    color: var(--border-crl);
 }
