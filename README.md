@@ -1,7 +1,7 @@
-# React&Django Todo App
+# React&FastAPI Todo App
 
 ## Description
-A simple Todo application using **React(vite)** and **Django** for task management. It allows you to add, edit, and delete tasks, as well as mark them as completed.
+A simple Todo application using **React(vite)** and **FastAPI** for task management. It allows you to add, edit, and delete tasks, as well as mark them as completed.
 
 ## Features
 - Adding new tasks.
