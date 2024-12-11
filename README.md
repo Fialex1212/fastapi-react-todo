@@ -173,7 +173,7 @@ Run the backend
 ```
 ## Screenshots
 
-![Desktop app Screenshot](./images/1.)
+![Desktop app Screenshot](./images/1.jpg)
 
 
 ## Authors
