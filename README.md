@@ -35,7 +35,8 @@ Run the backend
   .\venv\scripts\activate
   pip install requirements.txt
   uvicorn src.main:app
-```## API Reference
+```
+## API Reference
 
 ### Create a todo
 
