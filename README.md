@@ -9,6 +9,14 @@ A simple Todo application using **React(vite)** and **FastAPI** for task managem
 - Deleting tasks.
 - Marking tasks as completed.
 
+## Tech Stack
+
+**Frontend:** React, Vite, zustand
+
+**Backend:** FastAPI
+
+**Database** SQLite
+
 ## Installation
 
 Clone my project
