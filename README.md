@@ -1,13 +1,19 @@
 # React&Django Todo App
 
 ## Description
-A simple Todo application using **React(vite)** and **Django** for task management. It allows you to add, edit, and delete tasks, as well as mark them as completed.
+A simple Todo application using **React on Vite** and **Fastapi** for todo-app. It allows you to add, edit, and delete to, as well as mark them as completed.
 
-## Features
+## **Features**
 - Adding new tasks.
 - Editing existing tasks.
 - Deleting tasks.
 - Marking tasks as completed.
+
+## **Tech Stack:**
+  - Frontend: React, Vite.js, axios, zustand, react-hot-toast
+  - Backend: Fastapi, alembic, aiosqlite
+  - DevOps: Docker, docker-compose
+---
 
 ## Installation
 
@@ -30,75 +36,106 @@ Run the frontend
 Run the backend
 
 ```cmd
-  cd backend
+  cd backend/src
   python -m venv venv
   .\venv\scripts\activate
   pip install requirements.txt
-  uvicorn src.main:app
-```## API Reference
-
-### Create a todo
-
-```http
-  POST /api/todo/create
+  uvicorn main:app
 ```
 
-| Parameter | Type     | Description                |
-| :-------- | :------- | :------------------------- |
-| `todo` | `TodoCreate` | **Required**. Data of task |
+### Run using Docker
+Run the docker-compose
 
-#### Query example
+```cmd
+  docker-compose up --build
+```
+
+Backend by this path - http://127.0.0.1:8000/
+Frontend by this path - http://localhost:4173/
+
+## API Reference
+
+### Create a Todo
+
+```http
+POST /api/todo/create
+```
+
+**Description:** Create a new todo task.
+
+#### Request Body
+
+| Parameter     | Type         | Description                |
+| :------------ | :----------- | :------------------------- |
+| `title`       | `string`     | **Required**. Title of the task |
+| `description` | `string`     | Optional. Description of the task |
+
+#### Example Request
 ```json
 {
-    "title": "Create new app",
-    "description": "Create new app with cool functional",
+  "title": "Create new app",
+  "description": "Create new app with cool functional"
 }
 ```
-#### Response example
+
+#### Example Response
 ```json
-  {
-    "title": "Title",
-    "description": "Description",
-    "is_completed": false,
-    "id": "a46283a7-368d-4725-a4e2-dcf6698bc4a8",
-    "created_at": "2024-09-26T15:40:37.044667",
-    "updated_at": "2024-09-26T15:40:37.044667"
-  }
+{
+  "title": "Create new app",
+  "description": "Create new app with cool functional",
+  "is_completed": false,
+  "id": "a46283a7-368d-4725-a4e2-dcf6698bc4a8",
+  "created_at": "2024-09-26T15:40:37.044667",
+  "updated_at": "2024-09-26T15:40:37.044667"
+}
 ```
-### Get todo
+
+---
+
+### Get a Todo by ID
 
 ```http
-  GET /api/todo/get/{todo_id}
+GET /api/todo/get/{todo_id}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `todo_id`      | `string` | **Required**. Id of todo |
+**Description:** Retrieve a specific todo task by its ID.
 
-#### Response example
+#### Path Parameter
+
+| Parameter  | Type     | Description           |
+| :--------- | :------- | :-------------------- |
+| `todo_id`  | `string` | **Required**. Task ID |
+
+#### Example Response
 ```json
-  {
-    "title": "Title",
-    "description": "Description",
-    "is_completed": false,
-    "id": "a46283a7-368d-4725-a4e2-dcf6698bc4a8",
-    "created_at": "2024-09-26T15:40:37.044667",
-    "updated_at": "2024-09-26T15:40:37.044667"
-  }
+{
+  "title": "Title",
+  "description": "Description",
+  "is_completed": false,
+  "id": "a46283a7-368d-4725-a4e2-dcf6698bc4a8",
+  "created_at": "2024-09-26T15:40:37.044667",
+  "updated_at": "2024-09-26T15:40:37.044667"
+}
 ```
 
-### Get list of todo
+---
+
+### Get List of Todos
 
 ```http
-  GET /api/todo/list?skip={skip}&limit={limit}
+GET /api/todo/list?skip={skip}&limit={limit}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `skip`      | `int` | Skip first N tasks (default 0) |
-| `limit`      | `int` | Limit the number of tasks (default 100) |
+**Description:** Retrieve a list of todo tasks with optional pagination.
 
-#### Response example
+#### Query Parameters
+
+| Parameter | Type | Description                           |
+| :-------- | :--- | :------------------------------------ |
+| `skip`    | `int` | Number of items to skip (default: 0) |
+| `limit`   | `int` | Max number of items to return (default: 100) |
+
+#### Example Response
 ```json
 [
   {
@@ -119,58 +156,80 @@ Run the backend
   }
 ]
 ```
-### Update todo
+
+---
+
+### Update a Todo
 
 ```http
-  PUT /api/todo/update/{todo_id}
+PUT /api/todo/update/{todo_id}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `todo_id`      | `string` | **Required**. Id of todo |
+**Description:** Update a specific todo task.
 
-#### Query example
+#### Path Parameter
+
+| Parameter  | Type     | Description           |
+| :--------- | :------- | :-------------------- |
+| `todo_id`  | `string` | **Required**. Task ID |
+
+#### Request Body
+
+| Parameter      | Type      | Description                      |
+| :------------- | :-------- | :------------------------------- |
+| `title`        | `string`  | Optional. New title of the task  |
+| `description`  | `string`  | Optional. New description        |
+| `is_completed` | `boolean` | Optional. Mark as completed      |
+
+#### Example Request
 ```json
 {
-  "title": "Title",
-  "description": "Description",
+  "title": "Updated title",
+  "description": "Updated description",
   "is_completed": true
 }
 ```
-#### Response example
+
+#### Example Response
 ```json
 {
-  "created_at": "2024-09-26T15:40:37.044667",
-  "description": "Description",
-  "is_completed": false,
+  "title": "Updated title",
+  "description": "Updated description",
+  "is_completed": true,
   "id": "a46283a7-368d-4725-a4e2-dcf6698bc4a8",
-  "title": "Title",
-  "updated_at": "2024-09-26T15:40:37.044667"
+  "created_at": "2024-09-26T15:40:37.044667",
+  "updated_at": "2024-09-26T15:45:37.044667"
 }
 ```
 
-### Delete todo
+---
+
+### Delete a Todo
 
 ```http
-  DELETE /api/todo/delete/{todo_id}
+DELETE /api/todo/delete/{todo_id}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `todo_id`      | `string` | **Required**. Id of todo |
+**Description:** Delete a specific todo task.
 
+#### Path Parameter
 
-#### Response example
+| Parameter  | Type     | Description           |
+| :--------- | :------- | :-------------------- |
+| `todo_id`  | `string` | **Required**. Task ID |
+
+#### Example Response
 ```json
 {
-  "created_at": "2024-09-26T15:40:37.044667",
+  "title": "Title",
   "description": "Description",
   "is_completed": false,
   "id": "a46283a7-368d-4725-a4e2-dcf6698bc4a8",
-  "title": "Title",
+  "created_at": "2024-09-26T15:40:37.044667",
   "updated_at": "2024-09-26T15:40:37.044667"
 }
 ```
+
 ## Screenshots
 
 ![Desktop app Screenshot](./images/1.jpg)

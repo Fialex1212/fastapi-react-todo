@@ -1,0 +1,20 @@
+services:
+  frontend:
+    build:
+      context: ./frontend/todo
+      dockerfile: Dockerfile
+    container_name: nextjs-frontend
+    ports:
+      - "4173:4173"
+    environment:
+      NODE_ENV: production
+
+  backend:
+    build:
+      context: ./backend/src
+      dockerfile: Dockerfile
+    command: uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+    container_name: backend
+    restart: always
+    ports:
+      - "8000:8000"
