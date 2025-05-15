@@ -18,7 +18,7 @@
 .button::after{
     content: "";
     position: absolute;
-    background-image: url(../../../../../public/plus.svg);
+    background-image: url(../../../../public/plus.svg);
     width: 16px;
     height: 16px;
     top: 50%;
