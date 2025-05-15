@@ -1,5 +1,5 @@
-.delete__button{
-    cursor: pointer;
+.delete__button {
+  cursor: pointer;
 }
 
 .delete__button svg path {
@@ -10,4 +10,3 @@
 .delete__button:hover svg path {
   fill: #ff0000;
 }
-

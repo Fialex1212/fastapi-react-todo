@@ -1,10 +1,10 @@
-import Todo from './components/Todo/Todo'
+import Main from '@components/Main'
 
 function App() {
   return (
     <>
       <main>
-        <Todo />
+        <Main />
       </main>
     </>
   )

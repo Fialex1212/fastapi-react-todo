@@ -1,25 +1,26 @@
 import css from "./styles.module.css";
-import { PORT } from "../../../../../utils/constans";
+import { PORT } from "@utils/constans";
 import toast from "react-hot-toast";
 import axios from "axios";
-import useTodoStore from "../../../../../store/useTodoStore";
+import useTodoStore from "@store/useTodoStore";
 
-const DeleteButton = ({id}) => {
-  const {todoData, setTodoData, loadTodos} = useTodoStore();
+const DeleteButton = ({ id }) => {
+  const { todoData, setTodoData } = useTodoStore();
 
   //Function for delete todo
   const deleteTodo = async (id) => {
+    const updateTodo = todoData.filter((todo) => todo.id !== id);
+    setTodoData(updateTodo);
+
     try {
       const response = await axios.delete(`${PORT}/todo/delete/${id}`);
       console.log(response.data);
       toast.success("Todos successfully deleted!!!");
-      loadTodos();
     } catch (error) {
       console.error("Error: ", error);
       toast.error("Something went wrong: ", error);
+      setTodoData(updateTodo);
     }
-    const updateTodo = todoData.filter((todo) => todo.id !== id);
-    setTodoData(updateTodo);
   };
 
   return (

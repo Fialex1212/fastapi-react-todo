@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import css from "./styles.module.css";
-import TodoList from "./TodoList/TodoList";
+import TodoList from "@components/TodoList";
 import { Toaster } from "react-hot-toast";
-import TodoForm from "./TodoForm/TodoForm";
-import useTodoStore from "../../store/useTodoStore";
+import TodoForm from "@components/TodoForm";
+import useTodoStore from "@store/useTodoStore";
 
-const Todo = () => {
+const Main = () => {
   const { loadTodos } = useTodoStore();
 
   useEffect(() => {
@@ -26,4 +26,4 @@ const Todo = () => {
   );
 };
 
-export default Todo;
+export default Main;

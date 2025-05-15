@@ -2,7 +2,7 @@ import { useState } from "react";
 import css from "./styles.module.css";
 import CreateButton from "./CreateButton/CreateButton";
 import Input from "./Input/Input";
-import useTodoStore from "../../../store/useTodoStore";
+import useTodoStore from "../../store/useTodoStore";
 
 const TodoForm = () => {
   const { addTodo, loadTodos } = useTodoStore();

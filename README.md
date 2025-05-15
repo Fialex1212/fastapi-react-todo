@@ -1,7 +1,7 @@
 # React&Django Todo App
 
 ## Description
-A simple Todo application using **React on Vite** and **Fastapi** for todo-app. It allows you to add, edit, and delete to, as well as mark them as completed.
+A simple Todo application using **React on Vite** and **Fastapi** for todo-app. It allows you to add, edit, and delete tasks, as well as mark them as completed.
 
 ## **Features**
 - Adding new tasks.
@@ -51,6 +51,7 @@ Run the docker-compose
 ```
 
 Backend by this path - http://127.0.0.1:8000/
+
 Frontend by this path - http://localhost:4173/
 
 ## API Reference

@@ -1,6 +1,6 @@
-import useTodoStore from "../../../store/useTodoStore";
+import useTodoStore from "@store/useTodoStore";
 import css from "./styles.module.css";
-import Task from "./Task/Task";
+import TodoItem from "@components/TodoItem";
 
 const TodoList = () => {
   const { todoData } = useTodoStore();
@@ -19,8 +19,8 @@ const TodoList = () => {
   return (
     <div className={css.todo__list__container}>
       <div className={css.todo__list__info}>
-        <div className={css.info__item} >
-          <p className={css.tasks__created}>Tasks created</p>
+        <div className={css.info__item}>
+          <p className={css.tasks__created}>All Tasks</p>
           <p className={css.info__numbers}>{todoData.length}</p>
         </div>
         <div className={css.info__item}>
@@ -31,14 +31,10 @@ const TodoList = () => {
         </div>
       </div>
       <ul className={css.todo__list}>
-        {todoData.map(({title, is_completed, id}) => {
+        {todoData.map(({ title, is_completed, id }) => {
           return (
             <li className={css.todo__item} key={id}>
-              <Task
-                id={id}
-                title={title}
-                isCompleted={is_completed}
-              />
+              <TodoItem id={id} title={title} isCompleted={is_completed} />
             </li>
           );
         })}
